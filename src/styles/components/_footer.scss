@@ -16,6 +16,20 @@
     margin: 0;
   }
 
+  .lang-toggle {
+    width: fit-content;
+    position: absolute;
+    top: 7px;
+    right: 0;
+
+    .lang-toggle-cta {
+      color: vars.$white;
+      text-decoration-color: vars.$white;
+      font-size: vars.$fsTextBody;
+      text-transform: uppercase;
+    }
+  }
+
   .footer-separator {
     border-top: none;
     border-left: none;
