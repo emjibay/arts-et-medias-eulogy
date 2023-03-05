@@ -1,0 +1,444 @@
+@use 'variables' as vars;
+@use 'ui' as ui;
+
+@use '../mixins/mixins' as mx;
+
+
+// global dom elements
+body {
+  background-color: vars.$almostWhite;
+  font-size: 0 !important;
+  overflow-x: hidden;
+}
+
+img {
+  line-height: 0;
+  font-size: 0;
+}
+
+a {
+  @include ui.anchor();
+  color: vars.$black;
+}
+
+::selection {
+  background-color: vars.$main;
+  color: vars.$white;
+}
+
+main {
+  &:focus {
+    @include ui.noFocusOutline();
+  }
+}
+
+
+// common
+.content {
+  @include mx.contentContainer();
+
+  h1 {
+    @include ui.heading1();
+  }
+
+  h2 {
+    @include ui.heading2();
+  }
+
+  h3 {
+    @include ui.heading3();
+  }
+
+  h4 {
+    @include ui.heading4();
+  }
+
+  p {
+    @include ui.paragraph();
+  }
+}
+
+.page-content {
+  @include mx.nColumnWidth(6);
+  display: inline-block;
+  vertical-align: top;
+
+  @media #{ vars.$mqTablet } {
+    @include mx.nColumnWidth(8);
+  }
+}
+
+.latest-pieces-heading {
+  border-bottom: 1px solid vars.$lightGrey;
+  color: vars.$halfGrey;
+  font-family: vars.$ffTextBody;
+  font-size: vars.$fsVerySmol;
+  font-weight: bold;
+  margin-bottom: 0;
+  margin-top: 60px;
+  padding-bottom: 10px;
+}
+
+.cta,
+.website-cta {
+  @include ui.button();
+  color: vars.$almostWhite;
+  font-size: vars.$fsSmol;
+  width: 100%;
+
+  @media #{ vars.$mqTablet } {
+    width: max-content;
+  }
+
+  @media #{ vars.$mqDesktop } {
+    font-size: vars.$fsVerySmol;
+  }
+
+  .icon {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right: 10px;
+  }
+
+  &.external-cta {
+    .icon {
+      margin: 0 0 0 5px;
+
+      svg {
+        color: transparent;
+      }
+    }
+
+    &:hover {
+      .icon {
+        svg {
+          color: vars.$main;
+        }
+      }
+    }
+  }
+}
+
+.separator {
+  border: none;
+  border-bottom: 1px solid vars.$lightGrey;
+  margin: 40px auto;
+  width: 66%;
+
+  &.no-mt {
+    margin-top: 0
+  }
+
+  &.no-mb {
+    margin-bottom: 0
+  }
+}
+
+
+// images
+.remote-image-container {
+  position: relative;
+}
+
+.external-asset-icon {
+  display: none;
+  height: 0;
+  width: 0;
+}
+
+[data-apos-workflow-mode="draft"] {
+  .external-asset-icon {
+    color: vars.$main;
+    display: inline-block;
+    height: 15px;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 15px;
+  }
+}
+
+
+// a11y
+.sr-only {
+  @include mx.visuallyHidden();
+}
+
+
+// apos ui overrides
+body {
+  &[data-apos-workflow-mode="draft"] {
+    &[data-localhost="true"] {
+      border: 4px dashed vars.$green;
+    }
+
+    [data-apos-widget-wrapper="aem-anchor-heading"],
+    [data-apos-widget-wrapper="aem-articles-featured"],
+    [data-apos-widget-wrapper="aem-banner-ads"],
+    [data-apos-widget-wrapper="aem-books-featured"],
+    [data-apos-widget-wrapper="aem-education-featured"],
+    [data-apos-widget-wrapper="aem-education-featured"],
+    [data-apos-widget-wrapper="aem-events-featured"],
+    [data-apos-widget-wrapper="aem-link"],
+    [data-apos-widget-wrapper="aem-organizations-featured"],
+    [data-apos-widget-wrapper="aem-projects-featured"],
+    [data-apos-widget-wrapper="aem-source"],
+    [data-apos-widget-wrapper="aem-video"],
+    [data-apos-widget-wrapper="apostrophe-images"],
+    [data-apos-widget="apostrophe-rich-text"] > .apos-rich-text {
+      @include ui.cmsOutline();
+    }
+  }
+
+  .apos-empty {
+    @include ui.cmsOutline();
+  }
+}
+
+.apos-global-busy {
+  background-color: rgba(vars.$cmsColor, 0.25);
+
+  &::after {
+    $iconSize: 60px; // must be even for nice rotation
+    $iconHalfSize: 30px;
+    color: vars.$cmsColor;
+    left: calc(50% - #{$iconHalfSize});
+    top: calc(50% - #{$iconHalfSize});
+    width: $iconSize;
+    height: $iconSize;
+    font-size: $iconSize;
+    content: '\f1ce'; // circle notch https://fontawesome.com/v4.7.0/icon/circle-o-notch
+  }
+}
+
+[data-apos-widget="apostrophe-rich-text"] > [data-rich-text]:focus {
+  @include ui.cmsOutline();
+}
+
+.apos-area-widget-controls {
+  opacity: 0.8;
+}
+
+.apos-ui {
+  // buttons
+  .apos-button {
+    border-color: vars.$cmsColor;
+
+    &:hover,
+    &:active,
+    &.focus-visible {
+      @include ui.cmsBoxShadow();
+    }
+  }
+
+  .apos-button[data-apos-dropdown-button-label="active"] {
+    @include ui.cmsBoxShadow();
+  }
+
+  .apos-buttons {
+    border-color: vars.$cmsColor;
+    @include ui.cmsBoxShadow();
+  }
+
+  .apos-button--global,
+  .apos-button--major {
+    background-color: vars.$cmsColor;
+
+    &:hover {
+      @include ui.cmsBoxShadow();
+    }
+  }
+
+  .apos-button--in-group {
+    &:hover {
+      color: vars.$cmsColor;
+      box-shadow: none;
+    }
+  }
+
+  .apos-button--in-context {
+    &:not(.apos-button--group) {
+      @include ui.cmsBoxShadow();
+    }
+  }
+
+  // modal
+  .apos-modal-breadcrumb .apos-modal-breadcrumb-item {
+    border-bottom-color: vars.$cmsColor !important;
+  }
+
+  .apos-modal-body {
+    .image-widget-simplified {
+      img {
+        display: inline-block;
+        width: 100%;
+      }
+    }
+
+    li a:hover {
+      color: vars.$cmsColor;
+    }
+
+    .apos-chooser-tab-bar {
+      border-bottom-color: vars.$cmsColor;
+    }
+
+    .apos-chooser-tab-button {
+      &:hover {
+        color: vars.$cmsColor;
+      }
+      &.apos-active {
+        border-top-color: vars.$cmsColor;
+        border-right-color: vars.$cmsColor;
+        border-left-color: vars.$cmsColor;
+      }
+    }
+  }
+
+
+  // admin bar
+  .apos-admin-bar {
+    background-color: vars.$cmsColor;
+
+    .apos-admin-bar-item {
+      &:hover {
+        background-color: vars.$white;
+        color: vars.$cmsColor;
+      }
+
+      .apos-active {
+        background-color: vars.$white;
+        color: vars.$cmsColor;
+      }
+    }
+  }
+
+
+  // tables
+  .apos-table a:hover,
+  .apos-table td a:hover {
+    color: vars.$cmsColor;
+  }
+
+  .apos-manage-column--sortable:hover {
+    color: vars.$cmsColor;
+  }
+
+  .apos-reorganize-tree .jqtree-tree .apos-reorganize-controls a:hover {
+    color: vars.$cmsColor;
+  }
+
+
+  // image grid
+  .apos-manage-grid-view {
+    .apos-manage-grid-piece {
+      &:hover::before {
+        border: 2px solid vars.$cmsColor;
+      }
+      .apos-manage-grid-piece-controls .apos-button i {
+        color: vars.$cmsColor;
+      }
+    }
+  }
+
+  .apos-manage-grid-view .apos-manage-grid-piece.apos-focus {
+    &::before {
+      border: 2px solid vars.$cmsColor;
+    }
+  }
+
+  .apos-manage-grid-view .apos-manage-grid-piece.apos-focus .apos-field-input-checkbox-indicator {
+    background-color: vars.$cmsColor;
+    border-color: vars.$cmsColor;
+    border-width: 1px;
+  }
+
+
+  // fields
+  .apos-required label:first-of-type::after {
+    color: vars.$cmsColor;
+  }
+
+  // .apos-field-input-textarea:focus,
+  // .apos-field-input-text:focus,
+  // .apos-field-input-select:focus {
+  .apos-field-input-textarea.focus-visible,
+  .apos-field-input-text.focus-visible,
+  .apos-field-input-select.focus-visible {
+    @include ui.cmsBoxShadow();
+  }
+
+  [data-chooser-choice]:hover {
+    background-color: vars.$cmsColor;
+  }
+
+  .apos-field-input-checkbox:checked + .apos-field-input-checkbox-indicator {
+    background-color: vars.$cmsColor;
+    border-color: vars.$cmsColor;
+    border-width: 1px;
+  }
+
+
+  // tags
+  .apos-manage-tag-add {
+    color: vars.$cmsColor;
+
+    &:hover {
+      color: vars.$cmsColor;
+    }
+  }
+
+  .apos-manage-tags-view .apos-manage-tag-control--rename:hover,
+  .apos-manage-tags-view .apos-manage-tag-control--edit:hover {
+    color: vars.$cmsColor;
+  }
+
+  .apos-field-tags .apos-tags {
+    .apos-tag-entry {
+      border-bottom: 0px solid transparent;
+    }
+    .apos-tag-add:hover {
+      color: vars.$cmsColor;
+    }
+  }
+
+
+  // piece list
+  .apos-chooser-choice {
+    .apos-button--group,
+    .apos-button--group:active,
+    // .apos-button--group:focus {
+    .apos-button--group.focus-visible {
+      box-shadow: none;
+
+      .apos-button--in-group,
+      .apos-button--in-group:active,
+      // .apos-button--in-group:focus {
+      .apos-button--in-group.focus-visible {
+        box-shadow: none;
+      }
+    }
+  }
+
+
+  // apos field/singleton
+  .apos-area-divider {
+    @include ui.cmsBoxShadow();
+    background-color: vars.$cmsColor;
+  }
+
+
+  // workflow
+  .apos-workflow-locale-picker-items ul,
+  .apos-workflow-locale-tree ul {
+    border-color: vars.$cmsColor;
+  }
+}
+
+.cke_float {
+  .cke_inner {
+    @include ui.cmsBoxShadow();
+    border-color: vars.$cmsColor;
+  }
+}

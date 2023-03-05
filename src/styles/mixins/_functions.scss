@@ -1,0 +1,110 @@
+@use '../common/variables' as vars;
+
+
+// COLUMNS
+
+/**
+  * Calculates the span taken by
+  *   `n` number of columns and gutters
+  *   at a given breakpoint.
+  *
+  * @param $numColumns The number of columns to consider to calculate the width.
+  * @param $breakpoint The breakpoint at which the calculations should be made.
+  *
+  * @return The width of the span of `n` columns,
+  *   including the necessary amount of gutters.
+  */
+@function getColumnsSpan($numColumns, $breakpoint) {
+  $gutterWidth: getGutterWidth($breakpoint);
+  $columnWidth: getColumnWidth($breakpoint);
+
+  // calculate column span
+  $numGutters: $numColumns - 1;
+  $span: calc(
+    (#{$columnWidth} * #{$numColumns})
+    + (#{$gutterWidth} * #{$numGutters})
+  );
+
+  @return $span;
+}
+
+/**
+  * Provides the span taken by
+  * a column at a given breakpoint.
+  */
+@function getColumnWidth($breakpoint) {
+  $columnWidth: vars.$columnWidthXs;
+
+  @if ($breakpoint == vars.$tablet) {
+    $columnWidth: vars.$columnWidthSm;
+  }
+  @else if ($breakpoint == vars.$desktop) {
+    $columnWidth: vars.$columnWidthMd;
+  }
+  @else if ($breakpoint == vars.$xl) {
+    $columnWidth: vars.$columnWidthXL;
+  }
+  @else if ($breakpoint == vars.$xxl) {
+    $columnWidth: vars.$columnWidthXXL;
+  }
+
+  @return $columnWidth;
+}
+
+
+// GUTTERS
+
+/**
+  * Provides the span taken by
+  * a gutter at a given breakpoint.
+  */
+@function getGutterWidth($breakpoint) {
+  $gutterWidth: vars.$gutterWidthXs;
+
+  @if ($breakpoint == vars.$tablet) {
+    $gutterWidth: vars.$gutterWidthSm;
+  }
+  @else if ($breakpoint == vars.$desktop) {
+    $gutterWidth: vars.$gutterWidthMd;
+  }
+  @else if ($breakpoint == vars.$xl) {
+    $gutterWidth: vars.$gutterWidthXL;
+  }
+  @else if ($breakpoint == vars.$xxl) {
+    $gutterWidth: vars.$gutterWidthXXL;
+  }
+
+  @return $gutterWidth;
+}
+
+/**
+  * Provides the span taken by
+  * half a gutter at a given breakpoint.
+  */
+@function getGutterHalfWidth($breakpoint) {
+  $gutterWidth: vars.$gutterWidthXs / 2;
+
+  @if ($breakpoint == vars.$tablet) {
+    $gutterWidth: vars.$gutterWidthSm / 2;
+  }
+  @else if ($breakpoint == vars.$desktop) {
+    $gutterWidth: vars.$gutterWidthMd / 2;
+  }
+  @else if ($breakpoint == vars.$xl) {
+    $gutterWidth: vars.$gutterWidthXL / 2;
+  }
+  @else if ($breakpoint == vars.$xxl) {
+    $gutterWidth: vars.$gutterWidthXXL / 2;
+  }
+
+  @return $gutterWidth;
+}
+
+
+// MARGINS
+
+@function whitespace($level, $direction: 1) {
+  $px: 1px;
+  $value: ($level * 15) * $direction;
+  @return $value * $px;
+}

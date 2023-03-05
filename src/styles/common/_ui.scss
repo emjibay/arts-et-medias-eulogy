@@ -1,0 +1,340 @@
+@use 'variables' as vars;
+
+
+// headings
+@mixin headingBase {
+  font-family: vars.$ffHeading;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1.5;
+  margin: 20px 0 15px 0;
+
+  strong {
+    font-weight: normal;
+    font-style: normal;
+  }
+}
+
+@mixin heading1 {
+  @include headingBase();
+  font-size: 25pt;
+
+  @media #{ vars.$mqTablet } {
+    font-size: 30pt;
+  }
+}
+
+@mixin heading2 {
+  @include headingBase();
+  font-size: 22.5pt;
+}
+
+@mixin heading3 {
+  @include headingBase();
+  font-size: 17.5pt;
+}
+
+@mixin heading4 {
+  @include headingBase();
+  font-size: 17.5pt;
+}
+
+@mixin heading5 {
+  font-family: vars.$ffTextBody;
+  font-size: 15pt;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 1.5;
+  margin: 20px 0 15px 0;
+}
+
+@mixin heading6 {
+  font-family: vars.$ffTextBody;
+  font-size: vars.$fsTextBody;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 1.5;
+  margin: 20px 0 15px 0;
+}
+
+@mixin contentTypeHeading {
+  border-bottom: 1px solid vars.$lightGrey;
+  color: vars.$halfGrey;
+  font-family: vars.$ffTextBody;
+  font-size: vars.$fsVerySmol;
+  font-weight: bold;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  padding-bottom: 10px;
+  vertical-align: top;
+}
+
+@mixin minorText {
+  color: vars.$darkGrey;
+  font-family: vars.$ffTextBody;
+  font-size: vars.$fsSmol;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1.5;
+  text-align: left;
+
+  @media #{ vars.$mqXL } {
+    line-height: 1.625;
+  }
+  @media #{ vars.$mqXXL } {
+    line-height: 1.75;
+    font-size: vars.$fsBigTextBody;
+  }
+}
+
+// text blocks
+@mixin paragraph {
+  font-family: vars.$ffTextBody;
+  font-size: vars.$fsTextBody;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1.5;
+  margin: 15px 0;
+  text-align: left;
+  word-wrap: break-word;
+
+  @media #{ vars.$mqXL } {
+    line-height: 1.625;
+  }
+  @media #{ vars.$mqXXL } {
+    line-height: 1.75;
+    font-size: vars.$fsBigTextBody;
+  }
+}
+
+@mixin list {
+  @include paragraph();
+  position: relative;
+  padding-left: 25px;
+}
+
+@mixin unorderedListItem {
+  position: relative;
+  margin-bottom: 5px;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  &:before {
+    position: absolute;
+    content: "\2014";
+    left: -25px;
+    margin-right: 5px;
+  }
+}
+
+// interactive elements
+@mixin button {
+  // should be applicable to both <button> and <a>
+  // and provide the exact same visual behaviour
+
+  background-color: vars.$black;
+  border: 2px solid transparent;
+  color: vars.$almostWhite;
+  cursor: pointer;
+  display: inline-block;
+  height: 40px;
+  padding: 0 20px;
+
+  font-family: vars.$ffButtonLabel;
+  font-size: vars.$fsSmol;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 35px;
+  text-align: center;
+  text-decoration: none;
+
+  @media #{ vars.$mqDesktop } {
+    font-size: vars.$fsVerySmol;
+    height: 35px;
+    line-height: 35px;
+  }
+
+  &:hover {
+    background-color: vars.$white;
+    border: 2px solid vars.$main;
+    color: vars.$main;
+    text-decoration: none;
+  }
+
+  &:active {
+    text-decoration: none;
+  }
+
+  // &:focus {
+  &.focus-visible {
+    @include focusOutline();
+  }
+
+  &:disabled,
+  &[disabled] {
+    cursor: not-allowed;
+  }
+}
+
+@mixin anchor {
+  background-color: transparent;
+  border: none;
+  color: vars.$black;
+  cursor: pointer;
+  font-family: vars.$ffTextBody;
+  font-style: normal;
+  font-weight: normal;
+  height: inherit;
+  line-height: inherit;
+  padding: 0;
+  text-align: inherit;
+  text-decoration: underline;
+  text-decoration-color: vars.$main;
+  text-decoration-thickness: 2px;
+
+  &:hover {
+    color: vars.$main;
+    text-decoration: none;
+  }
+  &:active {
+    text-decoration: none;
+  }
+  // &:focus {
+  &.focus-visible {
+    @include focusOutline();
+  }
+}
+
+@mixin select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+  background-color: vars.$black;
+  background-image: url(/img/icon-caret-down-white.svg);
+  background-position-x: calc(100% - 15px);
+  background-position-y: center;
+  background-repeat: no-repeat;
+  background-size: 10px;
+  border: none;
+  color: vars.$almostWhite;
+  cursor: pointer;
+  font-family: vars.$ffButtonLabel;
+  font-size: vars.$fsVerySmol;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 35px;
+  padding-left: 10px;
+  padding-right: 30px;
+
+  &.focus-visible {
+    @include focusOutline();
+    color: vars.$almostWhite !important;
+  }
+
+  // fix for firefox removes dotted outline on selection option
+  &:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 vars.$black;
+  }
+
+  option {
+    background-color: vars.$almostWhite;
+    color: vars.$black;
+    font-family: vars.$ffSansSerif;
+    line-height: 1.5;
+  }
+}
+
+// forms
+@mixin fieldset {
+  font-family: vars.$ffTextBody;
+  font-weight: normal;
+}
+
+@mixin fieldsetLegend {
+  font-size: 0;
+  height: 0;
+  visibility: hidden;
+  width: 0;
+}
+
+@mixin textInput {
+  display: inline-block;
+
+  -webkit-appearance: none;
+  background-color: vars.$almostWhite;
+  border-radius: 0;
+  border: 1px solid vars.$black;
+  height: 35px;
+  padding: 0 10px;
+
+  color: vars.$black;
+  font-family: vars.$ffTextBody;
+  font-size: 10pt;
+  font-weight: normal;
+  line-height: 35px;
+
+  &:focus {
+    @include focusOutline();
+    background-color: vars.$white;
+  }
+
+  &::placeholder {
+    color: vars.$darkGrey;
+    opacity: 1;
+  }
+}
+
+@mixin inputLabel {
+  display: block;
+  color: vars.$black;
+  font-family: vars.$ffButtonLabel;
+  font-size: 10pt;
+  font-weight: normal;
+  margin-bottom: 5px;
+}
+
+@mixin radioButton {
+  font-family: vars.$ffTextBody;
+  font-weight: normal;
+}
+
+@mixin checkboxButton {
+  font-family: vars.$ffTextBody;
+  font-weight: normal;
+}
+
+// a11y
+@mixin focusOutline($color: vars.$main) {
+  border-color: $color !important;
+  box-shadow: 0 0 0 2.5pt $color !important;
+  outline: 0 !important;
+  transition: box-shadow 0s linear !important;
+
+  &::-moz-focus-inner {
+    border: 0;
+  }
+}
+
+@mixin noFocusOutline {
+  border-color: transparent;
+  box-shadow: none;
+  outline: none;
+
+  &::-moz-focus-inner {
+    border: 0;
+  }
+}
+
+
+// cms
+@mixin cmsOutline($color: vars.$cmsColor) {
+  outline: $color dashed 2px;
+}
+
+@mixin cmsBoxShadow($color: vars.$cmsColor) {
+  box-shadow: 0 0 4px 2px rgba($color, 0.25);
+}

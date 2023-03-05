@@ -1,0 +1,73 @@
+@use '../common/variables' as vars;
+@use '../common/ui' as ui;
+
+@use 'mixins' as mx;
+
+
+@mixin searchAndLangSwitch() {
+  .nav-item {
+    &.search {
+      .search-button {
+        color: vars.$almostWhite;
+        display: block;
+
+        @media #{ vars.$mqTablet } {
+          background-color: transparent;
+          border-radius: 0;
+          border: 0;
+          color: vars.$black;
+          display: inline-block;
+          height: 20px;
+          margin: 0;
+          padding: 0 5px;
+          position: relative;
+          top: 2px;
+          width: 20px;
+        }
+
+        @media #{ vars.$mqDesktop } {
+          top: 0;
+        }
+
+        &:hover {
+          color: vars.$main;
+        }
+
+        &.focus-visible {
+          @include ui.focusOutline();
+        }
+
+        .icon {
+          display: none;
+
+          @media #{ vars.$mqTablet } {
+            display: inline-block;
+            height: 12px;
+            left: 2px;
+            pointer-events: none;
+            position: absolute;
+            width: 12px;
+          }
+
+          @media #{ vars.$mqDesktop } {
+            height: 14px;
+            width: 14px;
+          }
+
+          @media #{ vars.$mqXL } {
+            height: 16px;
+            width: 16px;
+          }
+        }
+
+        .label {
+          text-align: center;
+
+          @media #{ vars.$mqTablet } {
+            @include mx.visuallyHidden();
+          }
+        }
+      }
+    }
+  }
+}

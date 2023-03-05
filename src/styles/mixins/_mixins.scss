@@ -1,0 +1,49 @@
+@use '../common/variables' as vars;
+
+@import 'content-containers';
+@import 'columns';
+@import 'margins';
+
+@import 'apos-overrides';
+
+
+// visibility
+@mixin hidden {
+  display: none;
+  visibility: hidden;
+}
+
+@mixin visible {
+  display: block;
+  visibility: visible;
+}
+
+@mixin visuallyHidden {
+  position: absolute;
+  border: 0;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  font-size: 0;;
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  width: 1px;
+}
+
+@mixin cancelVisuallyHidden {
+  position: unset;
+  border: unset;
+  clip: unset;
+  font-size: unset;
+  height: unset;
+  overflow: unset;
+  padding: unset;
+  width: unset;
+}
+
+
+// decoration
+@mixin underlinedH1() {
+  border-bottom: 2px solid vars.$lightGrey;
+  padding-bottom: 5px;
+}

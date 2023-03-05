@@ -1,0 +1,37 @@
+@use '../common/variables' as vars;
+@use '../common/ui' as ui;
+@use '../mixins/functions' as fn;
+@use '../mixins/mixins' as mx;
+
+
+.footer {
+  background-color: vars.$black;
+  color: vars.$almostWhite;
+  padding: fn.whitespace(4) 0;
+
+  .footer-title {
+    @include ui.headingBase();
+    font-size: 20pt;
+    line-height: 20pt;
+    margin: 0;
+  }
+
+  .footer-separator {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid vars.$almostWhite;
+    margin: fn.whitespace(2) 0;
+  }
+
+  .copyright {
+    display: inline-block;
+    font-family: vars.$ffHeading;
+    font-size: vars.$fsVerySmol;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1.25;
+    margin: 0;
+    text-align: left;
+  }
+}

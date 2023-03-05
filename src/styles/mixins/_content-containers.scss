@@ -1,0 +1,46 @@
+@use '../common/variables' as vars;
+@use '../mixins/functions' as fn;
+
+
+@mixin contentContainer {
+  position: relative;
+  margin: 0 auto;
+  width: vars.$phoneContent;
+
+  @media #{vars.$mqTablet} {
+    width: vars.$tabletContent;
+  }
+  @media #{vars.$mqDesktop} {
+    width: vars.$desktopContent;
+  }
+  @media #{vars.$mqXL} {
+    width: vars.$xlContent;
+  }
+  @media #{vars.$mqXXL} {
+    width: vars.$xxlContent;
+  }
+}
+
+@mixin customContentContainerWithSpanAt($numColSpan, $breakpoint) {
+  $nColWidth: fn.getColumnsSpan($numColSpan, $breakpoint);
+  width: $nColWidth;
+}
+
+@mixin customContentContainerWithSpan($numColSpan) {
+  position: relative;
+  margin: 0 auto;
+  width: vars.$phoneContent;
+
+  @media #{vars.$mqTablet} {
+    width: vars.$tabletContent;
+  }
+  @media #{vars.$mqDesktop} {
+    @include customContentContainerWithSpanAt($numColSpan, vars.$desktop);
+  }
+  @media #{$mqXL} {
+    @include customContentContainerWithSpanAt($numColSpan, vars.$xl);
+  }
+  @media #{$mqXXL} {
+    @include customContentContainerWithSpanAt($numColSpan, vars.$xxl);
+  }
+}

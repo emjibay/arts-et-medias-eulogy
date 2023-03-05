@@ -1,0 +1,13 @@
+{
+  "global": {
+    "lang": "fr",
+    "siteTitle": "Arts & Médias",
+    "siteDescription": "Découvertes, références, contenu critique et ressources sur l'art médiatique",
+    "copyrightLabel1": "La production et le contenu d’Arts & Médias sont gérés par Publications Arts & Médias.",
+    "copyrightLabel2": "Tous les autres droits d'auteur et marques de commerce sont la propriété de leurs propriétaires respectifs."
+  },
+  "home": {
+    "title": "Au revoir",
+    "partial": "templates/partials/home-fr.njk"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "arts-et-medias-eulogy",
+  "description": "Static website to say goodbye to Arts & Médias",
+  "author": "Mat Janson Blanchet <mat.jb@jansensan.net> (https://jansensan.net)",
+  "version": "0.0.1",
+  "license": "UNLICENSED",
+  "scripts": {
+    "build": "gulp build",
+    "dev": "gulp dev",
+    "build:styles": "gulp styles",
+    "build:templates": "gulp templates",
+    "start": "yarn hs"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-data": "^1.3.1",
+    "gulp-load-plugins": "^2.0.6",
+    "gulp-nunjucks": "^5.1.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-task-listing": "^1.1.0",
+    "http-server": "^0.12.3",
+    "node-sass": "^8.0.0",
+    "require-dir": "^1.2.0",
+    "sass": "^1.58.3"
+  },
+  "engines": {
+    "node": "14"
+  }
+}

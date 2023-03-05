@@ -1,0 +1,105 @@
+@use '../common/variables' as vars;
+@use '../common/ui' as ui;
+
+
+@mixin aposRichText {
+  h1 {
+    @include ui.heading1();
+  }
+  h2 {
+    @include ui.heading2();
+    margin-top: 50px;
+  }
+  h3 {
+    @include ui.heading3();
+    margin-top: 20px;
+  }
+  h4 {
+    color: vars.$darkGrey;
+    font-family: vars.$ffTextBody;
+    font-size: vars.$fsBigTextBody;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 1.25;
+    margin: 10px 0 15px 0;
+  }
+  h5 {
+    @include ui.heading5();
+  }
+  h6 {
+    @include ui.heading6();
+  }
+  p {
+    @include ui.paragraph();
+  }
+  blockquote {
+    background-color: vars.$lightestGrey;
+    padding: 15px 30px;
+    margin: 20px 0;
+
+    * {
+      font-size: vars.$fsSmol;
+      line-height: 1.75;
+    }
+  }
+
+  .anchor, a {
+    @include ui.anchor();
+  }
+
+  .underline, u {
+    text-decoration: underline;
+  }
+
+  .bold, b, strong {
+    font-weight: bold;
+  }
+
+  .italic, i {
+    font-style: italic;
+  }
+
+  cite,
+  em {
+    font-style: italic;
+  }
+  sup {
+    vertical-align: super;
+    font-size: 75%;
+  }
+  sub {
+    vertical-align: sub;
+    font-size: 75%;
+  }
+
+  ul {
+    // necessary to not affect apos ui
+    &:not(.apos-dropdown-items) {
+      @include ui.list();
+
+      li {
+        @include ui.unorderedListItem();
+      }
+    }
+  }
+
+  // fix italicized "plus" in button
+  .apos-button > i {
+    font-style: normal;
+  }
+}
+
+@mixin aposControls {
+  .apos-area-widget > .apos-ui {
+    position: absolute;
+    left: -30px;
+
+    .apos-area-widget-controls {
+      opacity: .333;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}

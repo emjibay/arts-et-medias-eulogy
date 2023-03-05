@@ -1,0 +1,14 @@
+// font families
+$ffSerif: 'YoungSerifRegular', Georgia, 'Times New Roman', Times, serif;
+$ffSansSerif: 'QuebecLight', Verdana, sans-serif;
+$ffMonospace: 'Courier New', Courier, monospace;
+
+$ffHeading: $ffSerif;
+$ffTextBody: $ffSansSerif;
+$ffButtonLabel: $ffSerif;
+
+// font sizes
+$fsBigTextBody: 13pt;
+$fsTextBody: 12.5pt;
+$fsSmol: 11.25pt;
+$fsVerySmol: 10pt;

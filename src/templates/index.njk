@@ -1,0 +1,31 @@
+<!doctype html>
+
+<html lang="{{ i18n.global.lang }}">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" >
+    <title>{{ i18n.global.siteTitle }}</title>
+    {% include "meta/fonts.njk" %}
+    <link rel="stylesheet" href="/styles/aem-eulogy.css">
+  </head>
+
+  <body>
+    {% include "components/header.njk" %}
+    <div class="body">
+      <main class="main-content content">
+        <article>
+          <h1 class="h1">{{ i18n.home.title }}</h1>
+          <img
+            class="hero-image"
+            src="/images/aem-eulogy-hero.jpg"
+            alt=""
+          >
+          {% include i18n.home.partial ignore missing %}
+        </article>
+      </main>
+    </div>
+    {% include "components/footer.njk" %}
+  </body>
+
+</html>

@@ -1,0 +1,54 @@
+@use '../common/variables' as vars;
+@use '../common/ui' as ui;
+@use '../mixins/functions' as fn;
+@use '../mixins/mixins' as mx;
+@use '../mixins/header-nav' as nav;
+
+
+.header {
+  position: relative;
+  border-bottom: 1px solid vars.$black;
+  padding: 20px 0;
+
+  @media #{ vars.$mqTablet } {
+    margin-bottom: 0;
+    padding: 20px 0 40px 0;
+  }
+
+  .site-title {
+    @include ui.headingBase();
+    color: vars.$black;
+    font-size: 25pt;
+    line-height: 1.375;
+    margin: 0;
+    text-align: left;
+    text-decoration: none;
+
+    @media #{ vars.$mqTablet } {
+      font-size: 30pt;
+    }
+
+    @media #{ vars.$mqDesktop } {
+      font-size: 35pt;
+    }
+
+    @media #{ vars.$mqXL } {
+      font-size: 40pt;
+    }
+  }
+
+  .site-subheading {
+    display: none;
+
+    @media #{ vars.$mqTablet } {
+      @include ui.paragraph();
+      display: block;
+      font-size: vars.$fsSmol;
+      margin: 0;
+    }
+
+    @media #{ vars.$mqDesktop } {
+      font-size: vars.$fsTextBody;
+    }
+  }
+}
