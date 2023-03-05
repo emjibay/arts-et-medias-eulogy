@@ -1,5 +1,4 @@
 @use '../common/variables' as vars;
-@use '../common/ui' as ui;
 @use '../mixins/mixins' as mx;
 @use '../mixins/functions' as fn;
 
@@ -7,12 +6,15 @@
 .main-content {
   @include mx.nColumnWidth(6);
   margin: fn.whitespace(4) auto fn.whitespace(8) auto;
-  
+
   @media #{ vars.$mqTablet } {
     @include mx.nColumnWidth(8);
   }
 
   .hero-image {
+    height: 300px;
+    object-fit: cover;
+    object-position: top;
     width: 100%;
   }
 }
