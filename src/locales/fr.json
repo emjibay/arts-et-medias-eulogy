@@ -9,6 +9,7 @@
   },
   "home": {
     "title": "Au revoir",
-    "partial": "templates/partials/home-fr.njk"
+    "heroAltText": "iPad qui montre la page couverture du site web d'Arts & Médias",
+    "partial": "partials/home-fr.njk"
   }
 }

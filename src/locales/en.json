@@ -9,6 +9,7 @@
   },
   "home": {
     "title": "Au revoir",
-    "partial": "templates/partials/home-en.njk"
+    "heroAltText": "iPad showing the front page of the Arts & Médias website",
+    "partial": "partials/home-en.njk"
   }
 }

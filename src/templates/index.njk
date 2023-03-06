@@ -19,9 +19,11 @@
           <img
             class="hero-image"
             src="/images/aem-eulogy-hero.jpg"
-            alt=""
+            alt="{{ i18n.home.heroAltText }}"
           >
-          {% include i18n.home.partial ignore missing %}
+          <div class="article-content">
+            {% include i18n.home.partial ignore missing %}
+          </div>
         </article>
       </main>
     </div>
