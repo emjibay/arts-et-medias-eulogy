@@ -1,11 +1,28 @@
+{% set baseURL = "https://arts-et-medias.net/" %}
+{% set heroImageURL = "/images/aem-eulogy-hero.jpg" %}
+
+
 <!doctype html>
 
 <html lang="{{ i18n.global.lang }}">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" >
     <title>{{ i18n.global.siteTitle }}</title>
+
+    <meta property="website" content="{{ baseURL }}" />
+    <meta property="description" content="{{ i18n.global.siteDescription }}" />
+
+    <meta property="og:title" content="{{ i18n.global.siteTitle }}" />
+    <meta property="og:description" content="{{ i18n.global.siteDescription }}" />
+    <meta property="og:image" content="{{ baseURL }}{{ heroImageURL }}" />
+    <meta property="og:image:secure_url" content="{{ baseURL }}{{ heroImageURL }}" />
+    <meta property="og:url" content="{{ baseURL }}" />
+    <meta property="og:site_name" content="{{ i18n.global.siteTitle }}" />
+    <meta property="og:locale" content="{{ i18n.global.lang }}_CA" />
+
     {% include "meta/fonts.njk" %}
     <link rel="stylesheet" href="/styles/aem-eulogy.css">
   </head>
