@@ -9,6 +9,8 @@
   },
   "home": {
     "title": "Au revoir",
+    "authorLabel": "auteur",
+    "publicationDateLabel": "date de publication",
     "heroAltText": "iPad qui montre la page couverture du site web d'Arts & Médias",
     "partial": "partials/home-fr.njk"
   }

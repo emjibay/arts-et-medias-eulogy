@@ -1,4 +1,6 @@
 @use '../common/variables' as vars;
+@use '../common/ui' as ui;
+
 @use '../mixins/mixins' as mx;
 @use '../mixins/functions' as fn;
 
@@ -14,6 +16,16 @@
   .h1 {
     border-bottom: 2px solid vars.$lightGrey;
     padding-bottom: 5px;
+  }
+
+  .author {
+    @include ui.anchor();
+    font-size: vars.$fsSmol;
+  }
+
+  .publication-date {
+    @include ui.paragraph();
+    font-size: vars.$fsSmol;
   }
 
   .hero-image {

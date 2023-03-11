@@ -40,13 +40,15 @@ main {
   h1 {
     @include ui.heading1();
   }
-
+  
   h2 {
     @include ui.heading2();
+    margin-top: 45px;
   }
 
   h3 {
     @include ui.heading3();
+    margin-top: 30px;
   }
 
   h4 {
@@ -55,6 +57,36 @@ main {
 
   p {
     @include ui.paragraph();
+  }
+
+  cite,
+  em {
+    font-style: italic;
+  }
+
+  blockquote {
+    background-color: vars.$lightestGrey;
+    padding: 15px 30px;
+    margin: 20px 0;
+
+    * {
+      font-size: vars.$fsSmol;
+      line-height: 1.75;
+    }
+  }
+
+  .embed-container {
+    position: relative;
+    width: fit-content;
+    margin: 45px auto;
+  }
+
+  .sig {
+    margin-top: 15px;
+    position: absolute;
+    right: 0;
+    rotate: -5deg;
+    width: 80px;
   }
 }
 

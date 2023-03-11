@@ -9,6 +9,8 @@
   },
   "home": {
     "title": "Au revoir",
+    "authorLabel": "author",
+    "publicationDateLabel": "publication date",
     "heroAltText": "iPad showing the front page of the Arts & Médias website",
     "partial": "partials/home-en.njk"
   }
